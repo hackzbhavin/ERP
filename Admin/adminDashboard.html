@@ -59,27 +59,24 @@
           <li class="header-menu">
             <span>General</span>
           </li>
+
+          <div class="tab">
           <li class="sidebar-dropdown ">
-            <a href="adminDashboard.html">
-              <i class="fa fa-tachometer-alt text-white"></i>
-              <span class='text-white'>Dashboard</span>
-           
+            <a  onclick="openTab(event, 'notice')" class="tablinks">
+              <i class="fa fa-tachometer-alt "></i>
+              <span class='text-white'>Dashboard
+              </span>
             </a>
          
           </li>
           <li class="sidebar-dropdown">
-            <a href="adminDashboard2.html">
+            <a onclick="openTab(event, 'menus')" class="tablinks" >
               <i class="fa fa-shopping-cart"></i>
               <span>Explore</span>
             </a>
 
           </li>
-
-
-      
- 
-      
-    
+          </div>
         </ul>
       </div>
       <!-- sidebar-menu  -->
@@ -92,23 +89,59 @@
       </a>
     </div>
   </nav>
+
+
+
+
+
+
   <!-- sidebar-wrapper  -->
-  <main class="page-content">
-    <div class="container-fluid">
-      <h2>Notice</h2>
-      <hr>
+  <!-- Notice Section toggle  -->
+
+  <div id="notice" class="tabcontent"> 
+    <main class="page-content">
+      <div class="container-fluid">
+        <h2>Notice</h2>
+        <hr>
+
+  
+
+        <footer class="text-center">
+          <div class="mb-2">
+      
+          </div>
+
+        </footer>
+      </div>
+    </main>
+
+</div>
 
  
+<div id="menus" class="tabcontent"> 
 
-      <footer class="text-center">
-        <div class="mb-2">
-     
-        </div>
+  <main class="page-content">
 
-      </footer>
+    <div class="menu">
+      <div class="title" onclick="f()">View Menu <span style='float:right;font-size:18px!important' class="fa fa-bars"></span>
+        <div class="arrow"></div>
+      </div>
+      <div class="dropdown">
+        <p>Manage Teachers <span class="fa fa-inbox"></span></p>
+        <p>Manage HOD's <span class="fa fa-gear"></span></p>
+        <p>Manage Students <span class="fa fa-gear"></span></p>
+        <p>Add Notice<span class="fa fa-gear"></span></p>
+        <p>TimeTable <span class="fa fa-sign-out"></span></p>
+        <p>ID-Card Requests <span class="fa fa-sign-out"></span></p>
+      </div>
     </div>
-  </main>
-  <!-- page-content" -->
+    
+      </main>
+
+</div>
+
+
+<!-- page-content" -->
 </div>
 <!-- page-wrapper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -154,6 +187,33 @@ $(".page-wrapper").addClass("toggled");
 
 
 });
+
+function f() {
+  document.getElementsByClassName('dropdown')[0].classList.toggle('down');
+  document.getElementsByClassName('arrow')[0].classList.toggle('gone');
+  if (document.getElementsByClassName('dropdown')[0].classList.contains('down')) {
+    setTimeout(function() {
+      document.getElementsByClassName('dropdown')[0].style.overflow = 'visible'
+    }, 500)
+  } else {
+    document.getElementsByClassName('dropdown')[0].style.overflow = 'hidden'
+  }
+}
+
+function openTab(evt, tabName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
 
 </script>
 
